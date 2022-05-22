@@ -17,18 +17,18 @@ var getConfirmations = function () {
   window.confirm("Please choose which criteria you would like to include in your password by following the prompts.");
 
   //prompt for upperCase Array
-  upperCaseConfirmation = window.confirm("Would you like to have Uppercase letters in your password?");
+  upperCaseConfirmation = window.confirm("Would you like to have Uppercase letters in your password? If yes click 'OK' or if no click 'CANCEL'.");
   console.log(upperCaseConfirmation);
 
 
   //prompt for lowerCase Array
-  lowerCaseConfirmation= window.confirm("Would you like to have Lowercase letters in your password?");
+  lowerCaseConfirmation= window.confirm("Would you like to have Lowercase letters in your password? If yes click 'OK' or if no click 'CANCEL'.");
 
   //prompt for special characters
-  specialCharactersConfirmation = window.confirm("Would you like to have special characters in your password?");
+  specialCharactersConfirmation = window.confirm("Would you like to have special characters in your password? If yes click 'OK' or if no click 'CANCEL'.");
 
   //prompt for numeric characters
-  numericConfirmation = window.confirm("Would you like to have your password include numbers?");
+  numericConfirmation = window.confirm("Would you like to have your password include numbers? If yes click 'OK' or if no click 'CANCEL'.");
 
 
   //Prompt for password length
