@@ -28,7 +28,7 @@ var generatePassword = function () {
     //if upperCase was selected
     if(upperCaseConfirmation === true) {
       userSelects = userSelects + upperCase
-    }
+    };
 
   //prompt for lowerCase 
   lowerCaseConfirmation= window.confirm("Would you like to have Lowercase letters in your password? If yes click 'OK' or if no click 'CANCEL'.");
@@ -42,7 +42,7 @@ var generatePassword = function () {
   console.log(specialCharactersConfirmation === true);
   if(specialCharactersConfirmation){
     userSelects = userSelects + specialCharacters
-  }
+  };
 
   //prompt for numeric characters
   numericConfirmation = window.confirm("Would you like to have your password include numbers? If yes click 'OK' or if no click 'CANCEL'.");
@@ -52,22 +52,21 @@ var generatePassword = function () {
   };
 
   //setting the password Length
-  if(!Number.isNaN(passwordLength) && passwordLength >= minPasswordLength && passwordLength <= maxPasswordLength) {
+  if((passwordLength) && passwordLength >= minPasswordLength && passwordLength <= maxPasswordLength) {
     while (password.length < passwordLength) {
       var randomIndexChoice= Math.floor(Math.random() * userSelects.length);
       var randomPasswordCharacter= userSelects.charAt(randomIndexChoice);
       password= password + randomPasswordCharacter
     }
-  }
+  } else {
+    window.alert("Your password needs to be between 8 -128 characters in length");
+  };
 
   return password
-
 }; //end of generate Password function
 
 //calls function to action
 generatePassword();
-
-
 
 //Event listener to generate password
 var generateBtn= document.querySelector("#generate");
