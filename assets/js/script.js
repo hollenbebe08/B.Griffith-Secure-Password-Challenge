@@ -1,8 +1,8 @@
-//Arrays
+//Variables
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-var specialCharacters = "!#$%&()*+-:/<>?@/^`|~";
-var numbers = "123456789";
+var specialCharacters = "!.#.$.%.&.(,)*.+.-.:./.<,>.?.@./.^.`.|.~";
+var numbers = "1234567890";
 
 var upperCaseConfirmation;
 var lowerCaseConfirmation;
@@ -13,60 +13,40 @@ var minPasswordLength= 8;
 var maxPasswordLength= 128;
 
 var userSelects = "";
+var password = "";
 
 // getConfirmations function
-var getConfirmations = function () {
-  //confirmation to generate password
-  window.confirm("Please choose which criteria you would like to include in your password by following the prompts.");
-
-  //prompt for upperCase Array
-  upperCaseConfirmation = window.confirm("Would you like to have Uppercase letters in your password? If yes click 'OK' or if no click 'CANCEL'.");
-  console.log(upperCaseConfirmation);
-
-  //prompt for lowerCase Array
-  lowerCaseConfirmation= window.confirm("Would you like to have Lowercase letters in your password? If yes click 'OK' or if no click 'CANCEL'.");
-  console.log(lowerCaseConfirmation);
-
-  //prompt for special characters
-  specialCharactersConfirmation = window.confirm("Would you like to have special characters in your password? If yes click 'OK' or if no click 'CANCEL'.");
-  console.log(specialCharactersConfirmation);
-
-  //prompt for numeric characters
-  numericConfirmation = window.confirm("Would you like to have your password include numbers? If yes click 'OK' or if no click 'CANCEL'.");
-  console.log(numericConfirmation);
-
+var generatePassword = function () {
   //Prompt for password length
   var passwordLength = window.prompt("Please type a number between 8 -128 to indicate how long you'd like your password to be.");
   passwordLength= Number.parseInt(passwordLength, 10);
   console.log(passwordLength);
+  
+  //prompt for upperCase
+  upperCaseConfirmation = window.confirm("Would you like to have Uppercase letters in your password? If yes click 'OK' or if no click 'CANCEL'.");
+  console.log(upperCaseConfirmation);
+    //if upperCase was selected
+    if(upperCaseConfirmation === true) {
+      userSelects = userSelects + upperCase
+    }
 
-  //In the case that no criteria are chosen
-  // if (getConfirmations === "") {
-  //   window.alert("You must choose at least one criteria to include in your password. Please try again!")
-  //   return upperCaseConfirmation
-  // };
-
-}; //end of get confirmations function
-
-
-//function to generate password if variable is true
-var generatePassword= function() {
-  //if upperCase was selected
-   if(upperCaseConfirmation){
-     userSelects = userSelects + upperCase
-   };
-
-  //if lowerCase was selected
+  //prompt for lowerCase 
+  lowerCaseConfirmation= window.confirm("Would you like to have Lowercase letters in your password? If yes click 'OK' or if no click 'CANCEL'.");
+  console.log(lowerCaseConfirmation === true);
   if(lowerCaseConfirmation){
     userSelects = userSelects + lowerCase
   };
 
-  //if special characters selected
+  //prompt for special characters
+  specialCharactersConfirmation = window.confirm("Would you like to have special characters in your password? If yes click 'OK' or if no click 'CANCEL'.");
+  console.log(specialCharactersConfirmation === true);
   if(specialCharactersConfirmation){
     userSelects = userSelects + specialCharacters
   }
 
-  //if numbers selected
+  //prompt for numeric characters
+  numericConfirmation = window.confirm("Would you like to have your password include numbers? If yes click 'OK' or if no click 'CANCEL'.");
+  console.log(numericConfirmation === true);
   if(numericConfirmation){
     userSelects = userSelects + numbers
   };
@@ -79,18 +59,21 @@ var generatePassword= function() {
       password= password + randomPasswordCharacter
     }
   }
-};
 
-//calls functions to action
-getConfirmations();
+  return password
+
+}; //end of generate Password function
+
+//calls function to action
 generatePassword();
 
 
+
 //Event listener to generate password
-var generateBtn= document.queryselector("#generate");
-generateBtn.addEventListener("click", function () {
-  var password=generatePassword()
-  var passwordToShow= document.querySelector("#password")
-  passwordToShow.textContent = password
+var generateBtn= document.querySelector("#generate");
+generateBtn.addEventListener("click", function() {
+  var password= generatePassword()
+  var passwordShown= document.querySelector("#password")
+  passwordShown.textContent= password
 });
 
