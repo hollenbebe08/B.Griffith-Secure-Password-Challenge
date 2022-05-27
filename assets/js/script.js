@@ -12,15 +12,16 @@ var passwordLength;
 var minPasswordLength= 8;
 var maxPasswordLength= 128;
 
-var userSelects = "";
-var password = "";
-
 // getConfirmations function
 var generatePassword = function () {
+  var userSelects = "";
+  var password = "";
   //Prompt for password length
   var passwordLength = window.prompt("Please type a number between 8 -128 to indicate how long you'd like your password to be.");
   passwordLength= Number.parseInt(passwordLength, 10);
   console.log(passwordLength);
+
+  
   
   //prompt for upperCase
   upperCaseConfirmation = window.confirm("Would you like to have Uppercase letters in your password? If yes click 'OK' or if no click 'CANCEL'.");
@@ -64,9 +65,6 @@ var generatePassword = function () {
 
   return password
 }; //end of generate Password function
-
-//calls function to action
-generatePassword();
 
 //Event listener to generate password
 var generateBtn= document.querySelector("#generate");
